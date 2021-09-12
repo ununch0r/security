@@ -8,7 +8,7 @@ namespace Lab2.HashAlgorithm.Helpers
         /// <summary>
         /// Extracts <see langword="UInt32"/> words array
         /// </summary>
-        public static UInt32[] Extract32BitWords(Byte[] message, UInt32 blockNo, UInt32 blockSizeInBytes)
+        public static UInt32[] ConvertToWords(Byte[] message, UInt32 blockNo, UInt32 blockSizeInBytes)
         {
             var messageStartIndex = blockNo * blockSizeInBytes;
             var extractedArray = new UInt32[blockSizeInBytes / MD5C.BytesPer32BitWord];

@@ -13,20 +13,20 @@ namespace Lab2.HashAlgorithm.Concrete
         {
             InitialValue = new MessageDigest
             {
-                A = MD5C.A_MD_BUFFER_INITIAL,
-                B = MD5C.B_MD_BUFFER_INITIAL,
-                C = MD5C.C_MD_BUFFER_INITIAL,
-                D = MD5C.D_MD_BUFFER_INITIAL
+                A = MD5C.InitialA,
+                B = MD5C.InitialB,
+                C = MD5C.InitialC,
+                D = MD5C.InitialD
             };
         }
 
-        public UInt32 A { get; set; }
+        public uint A { get; set; }
 
-        public UInt32 B { get; set; }
+        public uint B { get; set; }
 
-        public UInt32 C { get; set; }
+        public uint C { get; set; }
 
-        public UInt32 D { get; set; }
+        public uint D { get; set; }
 
         public Byte[] ToByteArray()
         {

@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Lab2.HashAlgorithm.Concrete;
+using Microsoft.Win32;
+using System;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using Lab2.HashAlgorithm.Concrete;
-using Microsoft.Win32;
 
 namespace Lab2.UI
 {

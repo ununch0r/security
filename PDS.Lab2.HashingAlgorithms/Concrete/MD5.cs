@@ -14,7 +14,7 @@ namespace Lab2.HashAlgorithm.Concrete
     public sealed class MD5
     {
         private const int OptimalChunkSizeMultiplier = 100_000; 
-        private const UInt32 OptimalChunkSize = MD5C.BytesCountPerBits512Block * OptimalChunkSizeMultiplier;
+        private const uint OptimalChunkSize = MD5C.BytesCountPerBits512Block * OptimalChunkSizeMultiplier;
 
         /// <summary>
         /// Computed hash as <see cref="string"/>
@@ -41,20 +41,17 @@ namespace Lab2.HashAlgorithm.Concrete
         /// </summary>
         /// <param name="message">Input message, byte array</param>
         /// <returns>Returns hash as <see cref="MessageDigest"/> model</returns>
-        public MessageDigest ComputeHash(Byte[] message)
+        public MessageDigest ComputeHash(byte[] message)
         {
             Hash = MessageDigest.InitialValue;
 
-            var paddedMessage = JoinArrays(message, GetMessagePadding((UInt32)message.Length));
+            var paddedMessage = JoinArrays(message, GetMessagePadding((uint)message.Length));
 
-            for (UInt32 bNo = 0; bNo < paddedMessage.Length / MD5C.BytesCountPerBits512Block; ++bNo)
+            for (uint blockNumber = 0; blockNumber < paddedMessage.Length / MD5C.BytesCountPerBits512Block; ++blockNumber)
             {
-                UInt32[] X = BitsHelper.Extract32BitWords(
-                    paddedMessage,
-                    bNo,
-                    MD5C.Words32BitArraySize * MD5C.BytesPer32BitWord);
+                var bitWords = BitsHelper.ConvertToWords(paddedMessage, blockNumber, MD5C.Words32BitArraySize * MD5C.BytesPer32BitWord);
 
-                FeedMessageBlockToBeHashed(X);
+                Hash += CalculateHashForBlock(bitWords);
             }
 
             return Hash;
@@ -64,7 +61,6 @@ namespace Lab2.HashAlgorithm.Concrete
         /// Computes MD5 hash of input file
         /// </summary>
         /// <param name="filePath">Path to file to be hashed</param>
-        /// <param name="chunkSizeMultiplier"></param>
         /// <returns></returns>
         public async Task<MessageDigest> ComputeFileHashAsync(String filePath)
         {
@@ -106,12 +102,12 @@ namespace Lab2.HashAlgorithm.Concrete
 
                     for (UInt32 bNo = 0; bNo < chunk.Length / MD5C.BytesCountPerBits512Block; ++bNo)
                     {
-                        UInt32[] X = BitsHelper.Extract32BitWords(
+                        UInt32[] X = BitsHelper.ConvertToWords(
                             chunk,
                             bNo,
                             MD5C.Words32BitArraySize * MD5C.BytesPer32BitWord);
 
-                        FeedMessageBlockToBeHashed(X);
+                        CalculateHashForBlock(X);
                     }
                 }
                 while (isFileEnd == false);
@@ -120,52 +116,52 @@ namespace Lab2.HashAlgorithm.Concrete
             return Hash;
         }
 
-        private void FeedMessageBlockToBeHashed(UInt32[] X)
+        private MessageDigest CalculateHashForBlock(UInt32[] X)
         {
-            UInt32 F, i, k;
+            uint F, i, k;
             var blockSize = MD5C.BytesCountPerBits512Block;
-            var MDq = Hash.Clone();
+            var temporaryHash = Hash.Clone();
 
             // first round
             for (i = 0; i < blockSize / 4; ++i)
             {
                 k = i;
-                F = BitsHelper.FuncF(MDq.B, MDq.C, MDq.D);
+                F = BitsHelper.FuncF(temporaryHash.B, temporaryHash.C, temporaryHash.D);
 
-                MDq.MD5IterationSwap(F, X, i, k);
+                temporaryHash.MD5IterationSwap(F, X, i, k);
             }
             // second round
             for (; i < blockSize / 2; ++i)
             {
                 k = (1 + (5 * i)) % (blockSize / 4);
-                F = BitsHelper.FuncG(MDq.B, MDq.C, MDq.D);
+                F = BitsHelper.FuncG(temporaryHash.B, temporaryHash.C, temporaryHash.D);
 
-                MDq.MD5IterationSwap(F, X, i, k);
+                temporaryHash.MD5IterationSwap(F, X, i, k);
             }
             // third round
             for (; i < blockSize / 4 * 3; ++i)
             {
                 k = (5 + (3 * i)) % (blockSize / 4);
-                F = BitsHelper.FuncH(MDq.B, MDq.C, MDq.D);
+                F = BitsHelper.FuncH(temporaryHash.B, temporaryHash.C, temporaryHash.D);
 
-                MDq.MD5IterationSwap(F, X, i, k);
+                temporaryHash.MD5IterationSwap(F, X, i, k);
             }
             // fourth round
             for (; i < blockSize; ++i)
             {
                 k = 7 * i % (blockSize / 4);
-                F = BitsHelper.FuncI(MDq.B, MDq.C, MDq.D);
+                F = BitsHelper.FuncI(temporaryHash.B, temporaryHash.C, temporaryHash.D);
 
-                MDq.MD5IterationSwap(F, X, i, k);
+                temporaryHash.MD5IterationSwap(F, X, i, k);
             }
 
-            Hash += MDq;
+            return temporaryHash;
         }
 
-        private static Byte[] GetMessagePadding(UInt64 messageLength)
+        private static byte[] GetMessagePadding(ulong messageLength)
         {
-            UInt32 paddingLengthInBytes = default;
-            var mod = (UInt32)(messageLength * MD5C.BitsPerByte % MD5C.Bits512BlockSize);
+            uint paddingLengthInBytes = default;
+            var mod = (uint)(messageLength * MD5C.BitsPerByte % MD5C.Bits512BlockSize);
 
             // Append Padding Bits
             if (mod == MD5C.BITS_448)
@@ -181,17 +177,15 @@ namespace Lab2.HashAlgorithm.Concrete
                 paddingLengthInBytes = (MD5C.BITS_448 - mod) / MD5C.BitsPerByte;
             }
 
-            var padding = new Byte[paddingLengthInBytes + MD5C.BitsPerByte];
+            var padding = new byte[paddingLengthInBytes + MD5C.BitsPerByte];
             padding[0] = MD5C.BITS_128;
 
             // Append Length
-            var messageLength64bit = messageLength * MD5C.BitsPerByte;
+            var messageLength64Bit = messageLength * MD5C.BitsPerByte;
 
             for (var i = 0; i < MD5C.BitsPerByte; ++i)
             {
-                padding[paddingLengthInBytes + i] = (Byte)(messageLength64bit
-                    >> (Int32)(i * MD5C.BitsPerByte)
-                    & MD5C.BITS_255);
+                padding[paddingLengthInBytes + i] = (byte)(messageLength64Bit >> (int)(i * MD5C.BitsPerByte) & MD5C.BITS_255);
             }
 
             return padding;

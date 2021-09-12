@@ -16,27 +16,27 @@ namespace Lab2.HashAlgorithm.Constants
         /// <summary>
         /// Initial value for A word of MD buffer
         /// </summary>
-        public const UInt32 A_MD_BUFFER_INITIAL = 0x67452301;
+        public const UInt32 InitialA = 0x67452301;
 
         /// <summary>
         /// Initial value for B word of MD buffer
         /// </summary>
-        public const UInt32 B_MD_BUFFER_INITIAL = 0xefcdab89;
+        public const UInt32 InitialB = 0xefcdab89;
 
         /// <summary>
         /// Initial value for C word of MD buffer
         /// </summary>
-        public const UInt32 C_MD_BUFFER_INITIAL = 0x98badcfe;
+        public const UInt32 InitialC = 0x98badcfe;
 
         /// <summary>
         /// Initial value for D word of MD buffer
         /// </summary>
-        public const UInt32 D_MD_BUFFER_INITIAL = 0x10325476;
+        public const UInt32 InitialD = 0x10325476;
 
         /// <summary>
         /// Lookup table with values based on sin() values
         /// </summary>
-        public readonly static UInt32[] T = new UInt32[64]
+        public static readonly uint[] T = new UInt32[64]
         {
             0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
             0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
@@ -59,7 +59,7 @@ namespace Lab2.HashAlgorithm.Constants
         /// <summary>
         /// Lookup table with round shift values
         /// </summary>
-        public readonly static Int32[] S = new Int32[] {
+        public static readonly Int32[] S = new Int32[] {
             7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
             5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
             4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,

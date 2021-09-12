@@ -1,6 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 using Lab2.HashAlgorithm.Concrete;
 using Microsoft.Win32;
 
@@ -12,18 +15,17 @@ namespace Lab2.UI
     public partial class MainWindow : Window
     {
         private readonly MD5 _hasher;
-        private readonly MD5 _fileHasher;
         public MainWindow()
         {
             InitializeComponent();
 
             _hasher = new MD5();
-            _fileHasher = new MD5();
         }
 
         private async void UploadFile_OnClick(object sender, RoutedEventArgs e)
         {
-            var filepath = string.Empty;
+            Input.Clear();
+
             var openFileDialog = new OpenFileDialog
             {
                 RestoreDirectory = true
@@ -31,43 +33,90 @@ namespace Lab2.UI
 
             if (openFileDialog.ShowDialog() == true)
             {
-                filepath = openFileDialog.FileName;
-            }
-            else
-            {
-                return;
-            }
-
-            try
-            {
-                UploadFile.IsEnabled = false;
-                await _fileHasher.ComputeFileHashAsync(filepath);
-                ResultHash.Text = _fileHasher.HashAsString;
-                MessageBox.Show("File Hash Generated");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                UploadFile.IsEnabled = false;
+                try
+                {
+                    UploadFile.IsEnabled = false;
+                    await _hasher.ComputeFileHashAsync(openFileDialog.FileName);
+                    ResultHash.Text = _hasher.HashAsString;
+                    MessageBox.Show("File Hash Generated");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    UploadFile.IsEnabled = true;
+                }
             }
         }
 
         private void Save_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            if (string.IsNullOrWhiteSpace(ResultHash.Text))
+            {
+                MessageBox.Show("Nothing to save!");
+
+                return;
+            }
+
+            var openFileDialog = new SaveFileDialog
+            {
+                RestoreDirectory = true
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(openFileDialog.FileName, ResultHash.Text);
+            }
         }
 
         private void UploadHash_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            var openFileDialog = new OpenFileDialog
+            {
+                RestoreDirectory = true
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                LoadedHash.Text = File.ReadAllText(openFileDialog.FileName);
+            }
         }
 
         private void Verify_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            if (string.IsNullOrWhiteSpace(ResultHash.Text)
+                || string.IsNullOrWhiteSpace(LoadedHash.Text))
+            {
+                MessageBox.Show("Result or loaded hash is not set!");
+
+                return;
+            }
+
+            var isHashMatch = string.Equals(
+                ResultHash.Text.Trim(),
+                LoadedHash.Text.Trim(),
+                StringComparison.CurrentCultureIgnoreCase);
+
+            if (isHashMatch)
+            {
+                VerificationStatus.Content = "Verified";
+                VerificationStatus.Background = new SolidColorBrush(Colors.LawnGreen);
+            }
+            else
+            {
+                VerificationStatus.Content = "Failed";
+                VerificationStatus.Background = new SolidColorBrush(Colors.Red);
+            }
+
+            VerificationStatus.Visibility = Visibility.Visible;
+        }
+
+        private void Input_OnKeyUp(object sender, KeyEventArgs e)
+        {
+            _hasher.ComputeHash(Input.Text);
+            ResultHash.Text = _hasher.HashAsString;
         }
     }
 }

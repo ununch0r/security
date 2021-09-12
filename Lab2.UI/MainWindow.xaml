@@ -64,7 +64,8 @@
                      Name="Input"
                      Margin="10"
                      FontWeight="Bold" FontSize="20" TextAlignment="Center"
-                     Foreground="DarkBlue" VerticalContentAlignment="Center">
+                     Foreground="DarkBlue" VerticalContentAlignment="Center"
+                     KeyUp="Input_OnKeyUp">
             </TextBox>
 
             <TextBlock Grid.Row="3" Grid.Column="2" 
@@ -128,6 +129,7 @@
             </Button>
 
             <Label Grid.Column="1"
+                   Visibility="Hidden"
                    Name="VerificationStatus"
                        FontWeight="Bold" FontSize="20"
                        VerticalContentAlignment="Center"

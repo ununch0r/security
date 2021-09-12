@@ -1,0 +1,85 @@
+﻿<Window x:Class="Lab1UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab1UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="900"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+                    <TextBlock Width="80" Height="25" Margin="5" TextAlignment="Center" FontWeight="Bold" FontSize="16">Count:</TextBlock>
+                    <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="NumbersCount" Width="80" Height="25" Margin="5" PreviewTextInput="NumberValidationTextBox" MaxLength="6"></TextBox>
+                    <Button Name="GenerateButton" Click="Generate_Click" Width="80" Height="25" Margin="5">Generate
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="Chartreuse"/>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=NumbersCount, Path=Text, UpdateSourceTrigger=PropertyChanged}" Value="">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="AliceBlue"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Grid.ColumnSpan="2">
+                    <TextBlock Width="15" Height="25" Margin="5" TextAlignment="Center" FontWeight="Bold" FontSize="16">a:</TextBlock>
+                    <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="AInput" Width="65" Height="25" Margin="5" PreviewTextInput="NumberValidationTextBox"></TextBox>
+
+                    <TextBlock Width="15" Height="25" Margin="5" TextAlignment="Center" FontWeight="Bold" FontSize="16">c:</TextBlock>
+                    <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="CInput"  Width="65" Height="25" Margin="5" PreviewTextInput="NumberValidationTextBox"></TextBox>
+
+                    <TextBlock Width="45" Height="25" Margin="5" TextAlignment="Center" FontWeight="Bold" FontSize="16">mod:</TextBlock>
+                    <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="ModInput" Width="60" Height="25" Margin="5" PreviewTextInput="NumberValidationTextBox"></TextBox>
+
+                    <TextBlock Width="30" Height="25" Margin="5" TextAlignment="Center" FontWeight="Bold" FontSize="16">X₀:</TextBlock>
+                    <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="StartValueInput" Width="60" Height="25" Margin="5" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                    <Button Background="Chartreuse" FontWeight="Bold" Name="OpenFileButton" Width="100" Height="25" Margin="5" Click="OpenFileBtn_Click"  IsEnabled="{Binding IsOpenFileEnabled}">Open File</Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock FontWeight="Bold" TextAlignment="Center" Name="CountLogs" Height="30" Margin="20" Background="AliceBlue">
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <TextBlock FontWeight="Bold" TextAlignment="Center" Name="Logs" Height="30" Margin="20" Background="AliceBlue">
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+            <ScrollViewer Grid.Row="2" CanContentScroll="True">
+                <TextBlock Padding="10" TextAlignment="Justify" Name="TextLogs" Width="800" Margin="20" TextWrapping="Wrap" Background="AliceBlue"></TextBlock>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>

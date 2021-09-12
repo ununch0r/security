@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab1UI", "Lab1UI\Lab1UI.csproj", "{EA0834FD-EF40-4E93-9A54-96F83BB4DF33}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab1.RandomNumberGenerator", "Lab1.RandomNumberGenerator\Lab1.RandomNumberGenerator.csproj", "{BA76C96C-DCAF-4095-B561-4AA42FA78D81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA0834FD-EF40-4E93-9A54-96F83BB4DF33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA0834FD-EF40-4E93-9A54-96F83BB4DF33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA0834FD-EF40-4E93-9A54-96F83BB4DF33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA0834FD-EF40-4E93-9A54-96F83BB4DF33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA76C96C-DCAF-4095-B561-4AA42FA78D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA76C96C-DCAF-4095-B561-4AA42FA78D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA76C96C-DCAF-4095-B561-4AA42FA78D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA76C96C-DCAF-4095-B561-4AA42FA78D81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A32DC59-8162-4654-9CDC-5D770B99FB45}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.1.1.0</Version>
+    <Authors>Andrii Kravchuk</Authors>
+    <Company>Andrii Kravchuk</Company>
+    <Description>Implementation of Random Number Generator</Description>
+  </PropertyGroup>
+
+</Project>

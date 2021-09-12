@@ -42,7 +42,7 @@ namespace Lab2.HashAlgorithm.Concrete
             return MemberwiseClone() as MessageDigest;
         }
 
-        internal void MD5IterationSwap(UInt32 F, UInt32[] X, UInt32 i, UInt32 k)
+        internal void IterationSwap(UInt32 F, UInt32[] X, UInt32 i, UInt32 k)
         {
             var tempD = D;
             D = C;
@@ -51,17 +51,17 @@ namespace Lab2.HashAlgorithm.Concrete
             A = tempD;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return $"{ToByteString(A)}{ToByteString(B)}{ToByteString(C)}{ToByteString(D)}";
         }
 
-        public override Int32 GetHashCode()
+        public override int GetHashCode()
         {
             return ToString().GetHashCode();
         }
 
-        public override Boolean Equals(Object value)
+        public override bool Equals(object value)
         {
             return value is MessageDigest md
                 && (GetHashCode() == md.GetHashCode() || ToString() == md.ToString());
@@ -78,7 +78,7 @@ namespace Lab2.HashAlgorithm.Concrete
             };
         }
 
-        private static string ToByteString(UInt32 x)
+        private static string ToByteString(uint x)
         {
             return string.Join(string.Empty, BitConverter.GetBytes(x).Select(y => y.ToString("x2")));
         }

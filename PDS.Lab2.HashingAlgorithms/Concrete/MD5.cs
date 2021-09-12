@@ -107,7 +107,7 @@ namespace Lab2.HashAlgorithm.Concrete
                             bNo,
                             MD5C.Words32BitArraySize * MD5C.BytesPer32BitWord);
 
-                        CalculateHashForBlock(X);
+                        Hash += CalculateHashForBlock(X);
                     }
                 }
                 while (isFileEnd == false);
@@ -128,7 +128,7 @@ namespace Lab2.HashAlgorithm.Concrete
                 k = i;
                 F = BitsHelper.FuncF(temporaryHash.B, temporaryHash.C, temporaryHash.D);
 
-                temporaryHash.MD5IterationSwap(F, X, i, k);
+                temporaryHash.IterationSwap(F, X, i, k);
             }
             // second round
             for (; i < blockSize / 2; ++i)
@@ -136,7 +136,7 @@ namespace Lab2.HashAlgorithm.Concrete
                 k = (1 + (5 * i)) % (blockSize / 4);
                 F = BitsHelper.FuncG(temporaryHash.B, temporaryHash.C, temporaryHash.D);
 
-                temporaryHash.MD5IterationSwap(F, X, i, k);
+                temporaryHash.IterationSwap(F, X, i, k);
             }
             // third round
             for (; i < blockSize / 4 * 3; ++i)
@@ -144,7 +144,7 @@ namespace Lab2.HashAlgorithm.Concrete
                 k = (5 + (3 * i)) % (blockSize / 4);
                 F = BitsHelper.FuncH(temporaryHash.B, temporaryHash.C, temporaryHash.D);
 
-                temporaryHash.MD5IterationSwap(F, X, i, k);
+                temporaryHash.IterationSwap(F, X, i, k);
             }
             // fourth round
             for (; i < blockSize; ++i)
@@ -152,7 +152,7 @@ namespace Lab2.HashAlgorithm.Concrete
                 k = 7 * i % (blockSize / 4);
                 F = BitsHelper.FuncI(temporaryHash.B, temporaryHash.C, temporaryHash.D);
 
-                temporaryHash.MD5IterationSwap(F, X, i, k);
+                temporaryHash.IterationSwap(F, X, i, k);
             }
 
             return temporaryHash;

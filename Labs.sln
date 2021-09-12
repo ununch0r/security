@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab1.RandomNumberGenerator"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab1", "Lab1", "{9DE0981F-AEAA-4989-B74B-C798235CD2D5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab2", "Lab2", "{79A9B764-9DE0-44E5-B3FE-039CE1341D0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2.UI", "Lab2.UI\Lab2.UI.csproj", "{34A4B236-396A-4E41-A091-FE0313D4E274}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,10 @@ Global
 		{BA76C96C-DCAF-4095-B561-4AA42FA78D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA76C96C-DCAF-4095-B561-4AA42FA78D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA76C96C-DCAF-4095-B561-4AA42FA78D81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34A4B236-396A-4E41-A091-FE0313D4E274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34A4B236-396A-4E41-A091-FE0313D4E274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34A4B236-396A-4E41-A091-FE0313D4E274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34A4B236-396A-4E41-A091-FE0313D4E274}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EA0834FD-EF40-4E93-9A54-96F83BB4DF33} = {9DE0981F-AEAA-4989-B74B-C798235CD2D5}
 		{BA76C96C-DCAF-4095-B561-4AA42FA78D81} = {9DE0981F-AEAA-4989-B74B-C798235CD2D5}
+		{34A4B236-396A-4E41-A091-FE0313D4E274} = {79A9B764-9DE0-44E5-B3FE-039CE1341D0B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A32DC59-8162-4654-9CDC-5D770B99FB45}

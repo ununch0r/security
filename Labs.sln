@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab1UI", "Lab1UI\Lab1UI.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab1.RandomNumberGenerator", "Lab1.RandomNumberGenerator\Lab1.RandomNumberGenerator.csproj", "{BA76C96C-DCAF-4095-B561-4AA42FA78D81}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab1", "Lab1", "{9DE0981F-AEAA-4989-B74B-C798235CD2D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EA0834FD-EF40-4E93-9A54-96F83BB4DF33} = {9DE0981F-AEAA-4989-B74B-C798235CD2D5}
+		{BA76C96C-DCAF-4095-B561-4AA42FA78D81} = {9DE0981F-AEAA-4989-B74B-C798235CD2D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A32DC59-8162-4654-9CDC-5D770B99FB45}

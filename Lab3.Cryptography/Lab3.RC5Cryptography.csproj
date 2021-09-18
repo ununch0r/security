@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Lab1.RandomNumberGenerator" Version="1.1.1" />
+    <PackageReference Include="Lab2.HashAlgorithm" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lab1.RandomNumberGenerator\Lab1.RandomNumberGenerator.csproj" />
+    <ProjectReference Include="..\PDS.Lab2.HashingAlgorithms\Lab2.HashAlgorithm.csproj" />
+  </ItemGroup>
+
+</Project>

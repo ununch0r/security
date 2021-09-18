@@ -6,7 +6,7 @@ namespace Lab1.RandomNumberGenerator.Models
     {
         static PseudoRandomNumberGeneratorOptions()
         {
-            var biggest = false;
+            var biggest = true;
             if(biggest)
             {    
                 CurrentValues = new PseudoRandomNumberGeneratorOptions

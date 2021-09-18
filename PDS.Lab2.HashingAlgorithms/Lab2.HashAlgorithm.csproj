@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Roman Moravskyi</Authors>
+    <Description>
+      Implementation of hashing algorithms: MD5
+      1.1.1.0 - Implemented MessageDigest.ToByteArray()
+    </Description>
+    <Version>1.1.2.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Update="E:\Study\PZ-4%281%29\PDS\src\PDS.Lab2\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+</Project>

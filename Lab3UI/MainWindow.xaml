@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab3UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="800" ResizeMode="NoResize">
+        Title="MainWindow" Height="300" Width="800" ResizeMode="NoResize" Background="AliceBlue">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -19,13 +19,15 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
-            <Label FontSize="20" HorizontalAlignment="Center">
-                Password:
+            <Label FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontWeight="Bold" 
+                   Foreground="DarkBlue">
+                Key:
             </Label>
 
-            <TextBox Name="Password" Grid.Column="1" Margin="5">
-                
-            </TextBox>
+            <TextBox Name="Password" Grid.Column="1" Margin="5" 
+                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                     FontSize="20" FontWeight="Bold" Foreground="DarkBlue"/>
         </Grid>
 
         <Grid Grid.Row="1" Margin="20">
@@ -34,7 +36,9 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             
-            <Button Margin="5" Width="100" Click="Button_Click">
+            <Button Margin="15 0"  Click="Button_Click"
+                    FontWeight="Bold" FontSize="16"
+                    Foreground="Aqua" Background="DarkBlue">
                 Choose file
             </Button>
 
@@ -47,11 +51,15 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button Click="EncipherBtn_Click" Margin="10"  Width="100" Height="30">
+            <Button Click="EncipherBtn_Click" Margin="10"
+                    FontWeight="Bold" FontSize="20"
+                    Foreground="Aqua" Background="DarkBlue">
                 Encipher
             </Button>
 
-            <Button Click="DecipherBtn_Click" Grid.Column="1" Margin="10" Width="100" Height="30">
+            <Button Click="DecipherBtn_Click" Grid.Column="1" Margin="10"
+                    FontWeight="Bold" FontSize="20"
+                    Foreground="DarkBlue" Background="Aqua">
                 Decipher
             </Button>
         </Grid>

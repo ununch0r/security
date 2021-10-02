@@ -62,7 +62,7 @@ namespace Lab2.HashAlgorithm.Concrete
         /// </summary>
         /// <param name="filePath">Path to file to be hashed</param>
         /// <returns></returns>
-        public async Task<MessageDigest> ComputeFileHashAsync(String filePath)
+        public async Task<MessageDigest> HashFileAsync(String filePath)
         {
             Hash = MessageDigest.InitialValue;
 

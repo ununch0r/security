@@ -1,21 +1,11 @@
-﻿using Microsoft.Win32;
-using Lab3.RC5Cryptography;
-using Lab3.RC5Cryptography.Options;
+﻿using Lab3.RC5Cryptography;
 using Lab3.RC5Cryptography.Extensions;
+using Lab3.RC5Cryptography.Options;
+using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 
 namespace Lab3UI
 {
@@ -32,8 +22,8 @@ namespace Lab3UI
             InitializeComponent();
             _rc5 = new RC5(new AlgorithmSettings
             {
-                RoundCount = RoundCountEnum.Rounds_16,
-                WordLengthInBits = WordLengthInBitsEnum.Bit16
+                RoundCount = RoundCountEnum.Rounds_8,
+                WordLengthInBits = WordLengthInBitsEnum.Bit32
             });
         }
 

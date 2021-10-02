@@ -35,7 +35,7 @@ namespace Lab2.UI
                 try
                 {
                     UploadFile.IsEnabled = false;
-                    await _hasher.ComputeFileHashAsync(openFileDialog.FileName);
+                    await _hasher.HashFileAsync(openFileDialog.FileName);
                     ResultHash.Text = _hasher.HashAsString;
                     MessageBox.Show("File Hash Generated");
                 }

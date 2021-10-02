@@ -68,7 +68,7 @@ namespace PDS.Lab2.HashingAlgorithms.Tests
         {
             var message = File.ReadAllBytes(filePath);
             var hasher = new MD5();
-            hasher.ComputeFileHashAsync(filePath).Wait();
+            hasher.HashFileAsync(filePath).Wait();
 
             Assert.AreEqual(MD5Helper.CreateMD5(message).ToUpper(), hasher.HashAsString.ToUpper());
         }

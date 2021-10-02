@@ -1,0 +1,230 @@
+﻿<Window x:Class="Lab4.Ui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab4.Ui"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.001*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="Rc5" Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.75*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.5*"></RowDefinition>
+                <RowDefinition Height="0.75*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                   FontSize="32" FontFamily="Verdana" FontWeight="Bold"
+                   Foreground="DarkGreen" Background="Beige"
+            >
+                RC5
+            </Label>
+
+            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                    Margin="20 10" Content="Choose File"
+                    FontSize="32" FontFamily="Verdana"
+                    Foreground="DarkGreen" Background="Bisque">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                    VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                    FontSize="16" FontFamily="Verdana" 
+                    Foreground="DarkGreen">
+                Filename:
+            </Label>
+            
+            <TextBox x:Name="KeyInput"
+                     Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                     FontSize="32" FontFamily="Verdana"
+                     Margin="10"
+                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                     Foreground="DarkGreen">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </TextBox.Resources>
+            </TextBox>
+
+            <Button Grid.Row="4" Grid.Column="0"
+                    Margin="20 10 10 10" Content="Enciper"
+                    FontSize="32" FontFamily="Verdana"
+                    Foreground="DarkGreen" Background="Bisque">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Grid.Row="4" Grid.Column="1"
+                    Margin="20 10 10 10" Content="Deciper"
+                    FontSize="32" FontFamily="Verdana"
+                    Foreground="DarkGreen" Background="Bisque">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <Label Grid.Row="0" Grid.Column="1" Background="Black">
+        </Label>
+        
+        <Grid x:Name="Rsa" Grid.Row="0" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.5*"></RowDefinition>
+                <RowDefinition Height="0.75*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                   FontSize="32" FontFamily="Verdana" FontWeight="Bold"
+                   Foreground="DarkGreen" Background="Beige"
+            >
+                RSA
+            </Label>
+
+            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                    Margin="20 10" Content="Choose File"
+                    FontSize="32" FontFamily="Verdana"
+                    Foreground="DarkGreen" Background="Bisque">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                    VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                    FontSize="16" FontFamily="Verdana" 
+                    Foreground="DarkGreen">
+                Filename:
+            </Label>
+
+            <Viewbox  Grid.Row="3" Grid.Column="0" Margin="20 10 10 10">
+                <RadioButton
+                             GroupName="EnciperType"
+                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                             FontFamily="Verdana" 
+                             Foreground="DarkGreen">
+                    Private
+                </RadioButton>
+            </Viewbox>
+
+            <Viewbox  Grid.Row="3" Grid.Column="1" Margin="10 10 20 10">
+                <RadioButton
+                    GroupName="EnciperType"
+                    VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                    FontFamily="Verdana" 
+                    Foreground="DarkGreen">
+                    Default
+                </RadioButton>
+            </Viewbox>
+
+            <Button Grid.Row="4" Grid.Column="0"
+                    Margin="20 10 10 10" Content="Import keys"
+                    FontSize="24" FontFamily="Verdana"
+                    Foreground="DarkGreen" Background="Bisque">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Grid.Row="4" Grid.Column="1"
+                    Margin="20 10 10 10" Content="Export keys"
+                    FontSize="24" FontFamily="Verdana"
+                    Foreground="DarkGreen" Background="Bisque">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Grid.Row="5" Grid.Column="0"
+                    Margin="20 10 10 10" Content="Enciper"
+                    FontSize="32" FontFamily="Verdana"
+                    Foreground="DarkGreen" Background="Bisque">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Grid.Row="5" Grid.Column="1"
+                    Margin="20 10 10 10" Content="Deciper"
+                    FontSize="32" FontFamily="Verdana"
+                    Foreground="DarkGreen" Background="Bisque">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.25*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" TextAlignment="Left" 
+                       FontSize="24" FontFamily="Verdana" 
+                       Foreground="DarkGreen" Background="Beige">
+            </TextBlock>
+
+            <Button Grid.Row="1"
+                    Content="Clear logs" Width="200"
+                    Margin="0 5"
+                    FontSize="18" FontFamily="Verdana"
+                    Foreground="DarkGreen" Background="Bisque">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

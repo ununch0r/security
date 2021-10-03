@@ -40,7 +40,8 @@
                 RC5
             </Label>
 
-            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+            <Button x:Name="ChooseRc5File" Click="ChooseRc5File_OnClick"
+                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                     Margin="20 10" Content="Choose File"
                     FontSize="32" FontFamily="Verdana"
                     Foreground="DarkGreen" Background="Bisque">
@@ -51,11 +52,12 @@
                 </Button.Resources>
             </Button>
 
-            <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+            <Label  x:Name="Rc5FileName"
+                    Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                     FontSize="16" FontFamily="Verdana" 
-                    Foreground="DarkGreen">
-                Filename:
+                    Foreground="Red">
+                File is not chosen!
             </Label>
             
             <TextBox x:Name="KeyInput"
@@ -71,8 +73,9 @@
                     </TextBox.Resources>
             </TextBox>
 
-            <Button Grid.Row="4" Grid.Column="0"
-                    Margin="20 10 10 10" Content="Enciper"
+            <Button x:Name="Rc5Encipher" Click="Rc5Encipher_OnClick" 
+                    Grid.Row="4" Grid.Column="0"
+                    Margin="20 10 10 10" Content="Encipher"
                     FontSize="32" FontFamily="Verdana"
                     Foreground="DarkGreen" Background="Bisque">
                 <Button.Resources>
@@ -82,8 +85,9 @@
                 </Button.Resources>
             </Button>
 
-            <Button Grid.Row="4" Grid.Column="1"
-                    Margin="20 10 10 10" Content="Deciper"
+            <Button x:Name="DecipherRc5" Click="DecipherRc5_OnClick"
+                    Grid.Row="4" Grid.Column="1"
+                    Margin="20 10 10 10" Content="Decipher"
                     FontSize="32" FontFamily="Verdana"
                     Foreground="DarkGreen" Background="Bisque">
                 <Button.Resources>
@@ -120,7 +124,8 @@
                 RSA
             </Label>
 
-            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+            <Button x:Name="ChooseRsaFile" Click="ChooseRsaFile_OnClick"
+                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                     Margin="20 10" Content="Choose File"
                     FontSize="32" FontFamily="Verdana"
                     Foreground="DarkGreen" Background="Bisque">
@@ -131,16 +136,17 @@
                 </Button.Resources>
             </Button>
 
-            <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+            <Label  x:Name="RsaFileName"
+                    Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                     FontSize="16" FontFamily="Verdana" 
-                    Foreground="DarkGreen">
-                Filename:
+                    Foreground="Red">
+                File is not chosen!
             </Label>
 
             <Viewbox  Grid.Row="3" Grid.Column="0" Margin="20 10 10 10">
-                <RadioButton
-                             GroupName="EnciperType"
+                <RadioButton x:Name="PrivateRadioButton"
+                             GroupName="EncipherType"
                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                              FontFamily="Verdana" 
                              Foreground="DarkGreen">
@@ -149,16 +155,17 @@
             </Viewbox>
 
             <Viewbox  Grid.Row="3" Grid.Column="1" Margin="10 10 20 10">
-                <RadioButton
-                    GroupName="EnciperType"
-                    VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                    FontFamily="Verdana" 
-                    Foreground="DarkGreen">
-                    Default
+                <RadioButton x:Name="PublicRadioButton"
+                             GroupName="EncipherType"
+                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                             FontFamily="Verdana" 
+                             Foreground="DarkGreen">
+                    Public
                 </RadioButton>
             </Viewbox>
 
-            <Button Grid.Row="4" Grid.Column="0"
+            <Button x:Name="ImportKeys" Click="ImportKeys_OnClick"
+                    Grid.Row="4" Grid.Column="0"
                     Margin="20 10 10 10" Content="Import keys"
                     FontSize="24" FontFamily="Verdana"
                     Foreground="DarkGreen" Background="Bisque">
@@ -169,7 +176,8 @@
                 </Button.Resources>
             </Button>
 
-            <Button Grid.Row="4" Grid.Column="1"
+            <Button x:Name="ExportKeys" Click="ExportKeys_OnClick"
+                    Grid.Row="4" Grid.Column="1"
                     Margin="20 10 10 10" Content="Export keys"
                     FontSize="24" FontFamily="Verdana"
                     Foreground="DarkGreen" Background="Bisque">
@@ -180,8 +188,9 @@
                 </Button.Resources>
             </Button>
 
-            <Button Grid.Row="5" Grid.Column="0"
-                    Margin="20 10 10 10" Content="Enciper"
+            <Button x:Name="RsaEncipher" Click="RsaEncipher_OnClick"
+                    Grid.Row="5" Grid.Column="0"
+                    Margin="20 10 10 10" Content="Encipher"
                     FontSize="32" FontFamily="Verdana"
                     Foreground="DarkGreen" Background="Bisque">
                 <Button.Resources>
@@ -191,8 +200,9 @@
                 </Button.Resources>
             </Button>
 
-            <Button Grid.Row="5" Grid.Column="1"
-                    Margin="20 10 10 10" Content="Deciper"
+            <Button x:Name="DecipherRsa" Click="DecipherRsa_OnClick"
+                    Grid.Row="5" Grid.Column="1"
+                    Margin="20 10 10 10" Content="Decipher"
                     FontSize="32" FontFamily="Verdana"
                     Foreground="DarkGreen" Background="Bisque">
                 <Button.Resources>
@@ -209,12 +219,14 @@
                 <RowDefinition Height="0.25*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" TextAlignment="Left" 
-                       FontSize="24" FontFamily="Verdana" 
+            <TextBlock x:Name="LogTextBlock"
+                       Grid.Row="0" TextAlignment="Left" 
+                       FontSize="12" FontFamily="Verdana" 
                        Foreground="DarkGreen" Background="Beige">
             </TextBlock>
 
-            <Button Grid.Row="1"
+            <Button x:Name="ClearLogs" Click="ClearLogs_OnClick"
+                    Grid.Row="1"
                     Content="Clear logs" Width="200"
                     Margin="0 5"
                     FontSize="18" FontFamily="Verdana"

@@ -42,7 +42,9 @@
                 Choose file
             </Button>
 
-            <TextBox Name="ChosenFile" Grid.Column="1" IsReadOnly="True" Margin="5"/>
+            <TextBox Name="ChosenFile" Grid.Column="1" IsReadOnly="True" Margin="5"
+                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                     FontSize="20" FontWeight="Bold" Foreground="DarkBlue"/>
         </Grid>
 
         <Grid Grid.Row="2">

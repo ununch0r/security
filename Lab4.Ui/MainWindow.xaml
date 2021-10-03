@@ -219,11 +219,14 @@
                 <RowDefinition Height="0.25*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <TextBlock x:Name="LogTextBlock"
-                       Grid.Row="0" TextAlignment="Left" 
-                       FontSize="12" FontFamily="Verdana" 
-                       Foreground="DarkGreen" Background="Beige">
-            </TextBlock>
+            <ScrollViewer Grid.Row="0" Margin="10 5">
+                <TextBlock x:Name="LogTextBlock"
+                            TextAlignment="Left" 
+                           FontSize="12" FontFamily="Verdana" 
+                           Foreground="DarkGreen" Background="Beige">
+                </TextBlock>
+            </ScrollViewer>
+
 
             <Button x:Name="ClearLogs" Click="ClearLogs_OnClick"
                     Grid.Row="1"
